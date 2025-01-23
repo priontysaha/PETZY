@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Home from "./Components/Home";
@@ -11,13 +11,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar>
-          <Routes>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/home" element={<Home />}></Route>
-          </Routes>
-        </Navbar>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+        </Routes>
       </BrowserRouter>
     </>
   );
