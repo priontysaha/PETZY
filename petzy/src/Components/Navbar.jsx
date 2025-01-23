@@ -10,10 +10,10 @@ const Navbar = () => {
           {" "}
           PETZY
         </Typography>
-        <Button variant="contained" to="/login" component={Link}>
+        <Button color="success" variant="contained" to="/login" component={Link}>
           Login
         </Button>
-        <Button variant="contained" to="/register" component={Link}>
+        <Button color="warning" variant="contained" to="/register" component={Link}>
           Register
         </Button>
         <Logout />

@@ -42,9 +42,9 @@ const Register = () => {
         >
           <Typography style={heading}>Register</Typography>
           <form>
-            <TextField style={row} label="Enter Name"></TextField>
-            <TextField style={row} label="Enter E-mail"></TextField>
-            <TextField style={row} label="Enter Password"></TextField>
+            <TextField sx={{label: {fontWeight: '700', fontSize:"1.3rem"}}} style={row} label="Enter Name"></TextField>
+            <TextField sx={{label: {fontWeight: '700', fontSize:"1.3rem"}}} style={row} label="Enter E-mail"></TextField>
+            <TextField sx={{label: {fontWeight: '700', fontSize:"1.3rem"}}} style={row} label="Enter Password"></TextField>
             <Button variant="contained" style={btnStyle}>
               Register
             </Button>

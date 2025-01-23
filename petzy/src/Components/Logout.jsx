@@ -5,7 +5,7 @@ const Logout = () => {
   return (
     <>
       {" "}
-      <Button variant="contained">Logout</Button>
+      <Button variant="contained" color="error">Logout</Button>
     </>
   );
 };
