@@ -1,7 +1,15 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 const Home = () => {
-  return <div></div>;
+  return (
+    <>
+      {" "}
+      <Button color="warning" variant="contained" to="/home" component={Link}>
+        Home
+      </Button>
+    </>
+  );
 };
 
 export default Home;
