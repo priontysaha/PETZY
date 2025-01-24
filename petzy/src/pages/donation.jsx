@@ -1,6 +1,6 @@
 import React from 'react'
 
-const pet_products = () => {
+const donation = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const pet_products = () => {
   )
 }
 
-export default pet_products
+export default donation
