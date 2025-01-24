@@ -1,35 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AppBar, Typography, Toolbar, Button } from "@mui/material";
 import Logout from "./Logout";
+import "./Navbar.css";
 const Navbar = () => {
   return (
-    <AppBar>
-      <Toolbar>
-        <Typography variant="h4" sx={{ flexGrow: 1 }}>
-          {" "}
-          PETZY
-        </Typography>
-
-        <Button
-          color="success"
-          variant="contained"
-          to="/login"
-          component={Link}
-        >
-          Login
-        </Button>
-        <Button
-          color="warning"
-          variant="contained"
-          to="/register"
-          component={Link}
-        >
-          Register
-        </Button>
-        <Logout />
-      </Toolbar>
-    </AppBar>
+    <nav>
+      <Link to="/" className="title">
+        PETZY
+      </Link>
+      <ul>
+        <li>
+          <NavLink to="/home">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/pet">Pet</NavLink>
+        </li>
+        <li>
+          <NavLink to="/pet_products">Pet_Products</NavLink>
+        </li>
+        <li>
+          <NavLink to="/donation">Donation</NavLink>
+        </li>
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+        <li>
+          <NavLink to="/register">Register</NavLink>
+        </li>
+        <li>
+          <NavLink to="/logout">Logout</NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
