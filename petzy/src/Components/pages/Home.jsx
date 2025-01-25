@@ -8,7 +8,7 @@ const Home = () => (
       sx={{
         padding: 4,
         borderRadius: 2,
-        boxShadow: 2,
+        boxShadow: 4,
         backgroundColor: "#f9f9f9",
         maxWidth: "600px", 
         margin: "0 auto",

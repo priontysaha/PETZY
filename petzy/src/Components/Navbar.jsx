@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { FaHome, FaPaw, FaBoxOpen, FaDonate, FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 import "./Navbar.css"; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav>
-      
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 50 }}
+    >
       <div className="logo-container">
         <img src="/logo.png" alt="Petzy Logo" className="logo" />
-        <Link to="/" className="title">
-          PETZY
-        </Link>
+        <Link to="/" className="title">PETZY</Link>
       </div>
 
       <div
-        className="menu"
-        onClick={() => {
-          setMenuOpen(!menuOpen);
-        }}
+        className={`menu ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
       >
         <span></span>
         <span></span>
@@ -28,29 +29,45 @@ const Navbar = () => {
 
       <ul className={menuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/home" className="nav-button">
+            <FaHome /> Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/pet">Pet</NavLink>
+          <NavLink to="/pet" className="nav-button">
+            <FaPaw /> Pet
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/pet_products">Pet Products</NavLink>
+          <NavLink to="/pet_products" className="nav-button">
+            <FaBoxOpen /> Pet Products
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/donation">Donation</NavLink>
+          <NavLink to="/donation" className="nav-button">
+            <FaDonate /> Donation
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login" className="nav-button">
+            <FaSignInAlt /> Login
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/register" className="nav-button">
+            <FaUserPlus /> Register
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/logout">Logout</NavLink>
+          <NavLink to="/logout" className="nav-button">
+            <FaSignOutAlt /> Logout
+          </NavLink>
         </li>
       </ul>
-    </nav>
+    </motion.nav>
   );
 };
 
 export default Navbar;
+
+
