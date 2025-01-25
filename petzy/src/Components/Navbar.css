@@ -1,5 +1,5 @@
 .active {
-  background-color: rgb(89, 81, 242);
+  background-color: #89afe5;
 }
 
 .logo-container {
@@ -21,6 +21,7 @@ nav {
   background-color: rgb(209, 238, 244);
   position: sticky;
   top: 0;
+  animation: gradientMove 20s infinite alternate;
 }
 
 nav .title {
@@ -28,8 +29,10 @@ nav .title {
   margin: 1rem;
   font-weight: bold;
   text-decoration: none;
-  color: rgb(89, 81, 242);
+  color: rgb(60, 52, 216);
 }
+
+
 
 nav ul {
   display: flex;
@@ -42,14 +45,14 @@ nav ul li {
 nav ul li a {
   display: block;
   text-decoration: none;
-  color: white;
+  color: rgb(3, 17, 47);
   padding: 0.5rem;
   margin: 0 0.5rem;
   border-radius: 0.5rem;
 }
 
 nav ul li a:not(.active):hover {
-  background-color: #5951f2;
+  background-color: #89afe5;
 }
 
 nav .menu {
