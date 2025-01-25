@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { Button, Container, Typography, Grid, Paper } from "@mui/material";
 
 const Home = () => (
-  <Container sx={{ textAlign: "center", mt: 10 }}>
+  <Container sx={{ textAlign: "center", mt: 30 }}>
     <Paper
       sx={{
         padding: 4,
         borderRadius: 2,
         boxShadow: 2,
         backgroundColor: "#f9f9f9",
+        maxWidth: "600px", 
+        margin: "0 auto",
       }}
     >
       <Typography variant="h3" sx={{ fontWeight: "bold", mb: 3 }}>
