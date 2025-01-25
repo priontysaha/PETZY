@@ -39,8 +39,8 @@ const Home = () => (
         <Grid item>
           <Link to="/donate" style={{ textDecoration: "none" }}>
             <Button
-              variant="outlined"
-              sx={{ padding: "0.8rem 2rem", borderRadius: 1 }}
+              variant="contained"
+              sx={{ padding: "0.8rem 2rem", borderRadius: 1 , backgroundColor:"green"}}
             >
               Support Us
             </Button>
