@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Button,
   Grid,
@@ -11,7 +12,6 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import React, { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -82,7 +82,7 @@ const Login = () => {
                     edge="end"
                     aria-label="toggle password visibility"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -114,3 +114,5 @@ const Login = () => {
 };
 
 export default Login;
+
+
