@@ -49,7 +49,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/pet_products" className="nav-button">
+          <NavLink to="/pet_store" className="nav-button">
             <FaBoxOpen /> Pet Products
           </NavLink>
         </li>
