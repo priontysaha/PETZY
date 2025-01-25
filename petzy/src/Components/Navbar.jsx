@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AppBar, Typography, Toolbar, Button } from "@mui/material";
-import Logout from "./Logout";
-import "./Navbar.css";
+import "./Navbar.css"; 
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav>
-      <Link to="/" className="title">
-        PETZY
-      </Link>
+      
+      <div className="logo-container">
+        <img src="/logo.png" alt="Petzy Logo" className="logo" />
+        <Link to="/" className="title">
+          PETZY
+        </Link>
+      </div>
+
       <div
         className="menu"
         onClick={() => {
@@ -21,6 +25,7 @@ const Navbar = () => {
         <span></span>
         <span></span>
       </div>
+
       <ul className={menuOpen ? "open" : ""}>
         <li>
           <NavLink to="/home">Home</NavLink>
@@ -29,7 +34,7 @@ const Navbar = () => {
           <NavLink to="/pet">Pet</NavLink>
         </li>
         <li>
-          <NavLink to="/pet_products">Pet_Products</NavLink>
+          <NavLink to="/pet_products">Pet Products</NavLink>
         </li>
         <li>
           <NavLink to="/donation">Donation</NavLink>

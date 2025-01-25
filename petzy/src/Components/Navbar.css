@@ -1,15 +1,28 @@
 .active {
-  background-color: darkslateblue;
+  background-color: #f76f88;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem; 
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  margin-right: 0.5rem;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: khaki;
+  background-color: rgb(244, 209, 226);
   position: sticky;
   top: 0;
 }
+
 nav .title {
   font-size: 1.5rem;
   margin: 1rem;
@@ -17,12 +30,15 @@ nav .title {
   text-decoration: none;
   color: white;
 }
+
 nav ul {
   display: flex;
 }
+
 nav ul li {
   list-style: none;
 }
+
 nav ul li a {
   display: block;
   text-decoration: none;
@@ -31,8 +47,9 @@ nav ul li a {
   margin: 0 0.5rem;
   border-radius: 0.5rem;
 }
+
 nav ul li a:not(.active):hover {
-  background-color: #172554;
+  background-color: #f76f88;
 }
 
 nav .menu {
@@ -81,3 +98,4 @@ nav .menu span {
     margin: 0.2rem 0.5rem;
   }
 }
+
