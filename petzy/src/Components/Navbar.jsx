@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaPaw, FaBoxOpen, FaDonate, FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
+import {
+  FaHome,
+  FaPaw,
+  FaBoxOpen,
+  FaDonate,
+  FaSignInAlt,
+  FaUserPlus,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
-import "./Navbar.css"; 
+import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +23,9 @@ const Navbar = () => {
     >
       <div className="logo-container">
         <img src="/logo.png" alt="Petzy Logo" className="logo" />
-        <Link to="/" className="title">PETZY</Link>
+        <Link to="/" className="title">
+          PETZY
+        </Link>
       </div>
 
       <div
@@ -43,11 +53,7 @@ const Navbar = () => {
             <FaBoxOpen /> Pet Products
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/donation" className="nav-button">
-            <FaDonate /> Donation
-          </NavLink>
-        </li>
+
         <li>
           <NavLink to="/login" className="nav-button">
             <FaSignInAlt /> Login
@@ -69,5 +75,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

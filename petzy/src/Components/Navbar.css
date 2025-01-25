@@ -5,7 +5,7 @@
 .logo-container {
   display: flex;
   align-items: center;
-  padding-left: 1rem; 
+  padding-left: 1rem;
 }
 
 .logo {
@@ -22,6 +22,7 @@ nav {
   position: sticky;
   top: 0;
   animation: gradientMove 20s infinite alternate;
+  width: 100%;
 }
 
 nav .title {
@@ -31,8 +32,6 @@ nav .title {
   text-decoration: none;
   color: rgb(60, 52, 216);
 }
-
-
 
 nav ul {
   display: flex;
@@ -101,4 +100,3 @@ nav .menu span {
     margin: 0.2rem 0.5rem;
   }
 }
-
