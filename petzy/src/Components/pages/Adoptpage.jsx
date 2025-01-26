@@ -6,12 +6,12 @@ const Adoptpage = () => {
   return (
     <Paper
       sx={{
-        width: "100%", // Full width
-        height: "100vh", // Full viewport height
-        display: "flex", // Use flexbox for layout
-        flexDirection: "column", // Stack content vertically
-        justifyContent: "flex-start", // Align content to the top
-        alignItems: "center", // Horizontally center content
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
         padding: 4,
         borderRadius: 3,
         boxShadow: 4,
