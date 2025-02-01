@@ -1,76 +1,76 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Navbar.css"; // Optional custom styles
 import {
   FaHome,
   FaPaw,
   FaBoxOpen,
-  FaDonate,
+  FaEnvelope,
   FaSignInAlt,
   FaUserPlus,
-  FaSignOutAlt,
+  FaBars,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
-import "./Navbar.css";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 50 }}
-    >
-      <div className="logo-container">
-        <img src="/logo.png" alt="Petzy Logo" className="logo" />
-        <Link to="/" className="title">
-          PETZY
+    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+      <div className="container">
+        <Link to="/" className="navbar-brand d-flex align-items-center">
+          <img src="/logo.png" alt="Petzy Logo" className="logo me-2" />
+          <span className="fw-bold fs-4">PETZY</span>
         </Link>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <FaBars />
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mx-auto">
+            <li className="nav-item">
+              <NavLink to="/home" className="nav-link">
+                <FaHome className="me-1" /> Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/pet" className="nav-link">
+                <FaPaw className="me-1" /> Pet
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/pet_store" className="nav-link">
+                <FaBoxOpen className="me-1" /> Pet Products
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/contact" className="nav-link">
+                <FaEnvelope className="me-1" /> Contact Us
+              </NavLink>
+            </li>
+          </ul>
+
+          <div className="d-lg-flex d-block text-center">
+            <NavLink
+              to="/login"
+              className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
+            >
+              <FaSignInAlt className="me-1" /> Login
+            </NavLink>
+            <NavLink to="/register" className="btn btn-primary">
+              <FaUserPlus className="me-1" /> Register
+            </NavLink>
+          </div>
+        </div>
       </div>
-
-      <div
-        className={`menu ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <ul className={menuOpen ? "open" : ""}>
-        <li>
-          <NavLink to="/home" className="nav-button">
-            <FaHome /> Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/pet" className="nav-button">
-            <FaPaw /> Pet
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/pet_store" className="nav-button">
-            <FaBoxOpen /> Pet Products
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink to="/login" className="nav-button">
-            <FaSignInAlt /> Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register" className="nav-button">
-            <FaUserPlus /> Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/logout" className="nav-button">
-            <FaSignOutAlt /> Logout
-          </NavLink>
-        </li>
-      </ul>
-    </motion.nav>
+    </nav>
   );
 };
 
