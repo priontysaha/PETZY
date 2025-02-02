@@ -64,7 +64,10 @@ const Navbar = () => {
             >
               <FaSignInAlt className="me-1" /> Login
             </NavLink>
-            <NavLink to="/register" className="btn btn-primary">
+            <NavLink
+              to="/register"
+              className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
+            >
               <FaUserPlus className="me-1" /> Register
             </NavLink>
           </div>

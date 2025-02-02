@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <section className="text-center py-5 bg-light">
         <div className="container">
-          <h1 className="display-4">Your Pets Are Our Priority</h1>
+          <h2 className="fw-bold mt-5">Your Pets Are Our Priority</h2>
           <p className="lead">
             Ensure you are fully prepared to provide proper care and attention
             to your pet before welcoming them into your home.
@@ -24,9 +24,11 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="text-center py-5 bg-dark text-white">
-        <div className="container">
-          <h2>1.2K+ Furry Friends Living Their Best Lives</h2>
+      <section className="text-center py-5 bg-light">
+        <div className="container w-50 mx-auto bg-dark text-white p-4 rounded-3 shadow-lg text-center">
+          <h2 className="fw-bold">
+            1.2K+ Furry Friends Living Their Best Lives
+          </h2>
           <p>
             With a focus on matching the right pet with the right family,
             PawFinds makes it easy to adopt love and foster happiness.
@@ -36,10 +38,12 @@ const Home = () => {
 
       <section className="py-5">
         <div className="container text-center">
-          <h2>Planning to Adopt a Pet?</h2>
-          <div className="row mt-4">
+          <h2 className="mt-5">Planning to Adopt a Pet?</h2>
+          <div className="row mt-5">
             <div className="col-md-4">
-              <h4>The Joy of Pet Adoption</h4>
+              <h4 className="fw-bold" style={{ color: "cornflowerblue" }}>
+                The Joy of Pet Adoption
+              </h4>
               <p>
                 Bringing a pet into your life can be an incredibly rewarding
                 experience, not just for you but for the furry friend you
@@ -47,14 +51,18 @@ const Home = () => {
               </p>
             </div>
             <div className="col-md-4">
-              <h4>A Guide to Pet Adoption</h4>
+              <h4 className="fw-bold" style={{ color: "cornflowerblue" }}>
+                A Guide to Pet Adoption
+              </h4>
               <p>
                 Are you considering adding a new pet to your family? Pet
                 adoption is a wonderful option to consider.
               </p>
             </div>
             <div className="col-md-4">
-              <h4>Healing Power of Animals</h4>
+              <h4 className="fw-bold" style={{ color: "cornflowerblue" }}>
+                Healing Power of Animals
+              </h4>
               <p>
                 Animals have an extraordinary ability to touch our lives in
                 profound ways, offering not only companionship but also a
