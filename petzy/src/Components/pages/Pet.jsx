@@ -139,7 +139,7 @@ const Pet = () => {
             transition: background 0.2s ease-in-out;
           }
           .show-interest-btn:hover {
-            background: #ffcc00;
+            background:rgb(163, 189, 239);
           }
         `}
       </style>
