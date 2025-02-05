@@ -3,22 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Contact = () => {
   return (
-    <div className="container text-center py-5">
-      <div className="mb-4">
-        <img
-          src="/logo.png"
-          alt="PawFinds Logo"
-          style={{ width: "50px", height: "50px" }}
-          className="mb-2"
-        />
-        <h5 className="fw-bold mb-0">Petzy</h5>
-        <p className="text-muted">Your Path to Pet Adoption</p>
-      </div>
+    <div className="container text-center py-5" style={{ marginTop: "100px" }}>
 
       <div className="row align-items-center">
         <div className="col-md-6">
           <h1 className="mb-4">Let’s Get in Touch</h1>
-          <p className="fw-bold mb-4">If you have any questions or concerns, feel free to reach out to us!</p>
+          <p className="fw-bold mb-4" style={{ fontSize: "1.25rem" }}>If you have any questions or concerns, feel free to reach out to us!</p>
           <p className="mb-3">
             <i className="bi bi-envelope"></i> <a href="mailto:snehaaa120@gmail.com" className="text-dark">snehaaa120@gmail.com</a>
           </p>
