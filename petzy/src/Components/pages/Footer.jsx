@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <footer className="bg-light py-5">
       <div className="container text-center">
-        {/* Logo and branding */}
         <div className="mb-4">
           <img
             src="/logo.png"
@@ -17,7 +16,6 @@ const Footer = () => {
           <p className="text-muted">Your Path to Pet Adoption</p>
         </div>
 
-        {/* Contact links */}
         <div className="d-flex justify-content-center align-items-center gap-4 mb-4">
           <a
             href="mailto:snehaaa120@gmail.com"
@@ -59,11 +57,13 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Footer text */}
         <p className="text-muted">
           You can reach me at{" "}
-          <a href="mailto:snehaaa120@gmail.com" className="text-decoration-none">
-            snehaaa120@gmail.com
+          <a
+            href="mailto:priontysaha003@gmail.com"
+            className="text-decoration-none"
+          >
+            priontysaha003@gmail.com
           </a>
         </p>
 
