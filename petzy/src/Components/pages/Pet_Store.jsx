@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import Footer from "./Footer";
+
 
 const products = [
   { id: 1, name: "Premium Dog Food", price: "$20", image: "/images/dog_food.jpg", description: "High-quality dog food for a healthy diet." },
@@ -40,6 +42,7 @@ const Pet_Store = () => {
           </Grid>
         ))}
       </Grid>
+      <Footer />
     </Container>
   );
 };
