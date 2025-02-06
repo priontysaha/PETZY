@@ -8,9 +8,10 @@ import Home from "./Components/pages/Home";
 import Pet from "./Components/pages/Pet";
 import Pet_Store from "./Components/pages/Pet_Store";
 import Donation from "./Components/pages/Donation";
-import Adoptpage from "./Components/pages/Adoptpage";
+
 import Donatepage from "./Components/pages/Donatepage";
 import Contact from "./Components/pages/Contact";
+import Services from "./Components/pages/Services";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,9 +27,9 @@ function App() {
           <Route path="/pet" element={<Pet />}></Route>
           <Route path="/pet_store" element={<Pet_Store />}></Route>
           <Route path="/donation" element={<Donation />}></Route>
-          <Route path="/adopt" element={<Adoptpage />} />
           <Route path="/donate" element={<Donatepage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />}></Route>
         </Routes>
       </BrowserRouter>
     </>
