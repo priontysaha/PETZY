@@ -23,8 +23,8 @@ const products = [
 
 const Pet_Store = () => {
   return (
-    <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif" }}>
-      <Typography variant="h3" style={{ color: "rgb(60, 52, 216)", fontWeight: "bold", textAlign: "center", marginBottom: "20px" }}>
+    <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif", marginTop: "100px"}}>
+      <Typography variant="h3" style={{ color: "cornflowerblue", fontWeight: "bold", textAlign: "center", marginBottom: "20px", }}>
         Welcome to Our Pet Store!
       </Typography>
       <Grid container spacing={3}>
@@ -33,16 +33,33 @@ const Pet_Store = () => {
             <Card>
               <CardMedia component="img" height="200" image={product.image} alt={product.name} />
               <CardContent>
-                <Typography variant="h6" fontWeight="bold">{product.name}</Typography>
-                <Typography variant="body2" color="textSecondary">{product.description}</Typography>
-                <Typography variant="h6" color="primary">{product.price}</Typography>
-                <Button variant="contained" color="primary" fullWidth style={{ marginTop: "10px" }}>Add to Cart</Button>
+                <Typography variant="h6" fontWeight="bold">
+                  {product.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {product.description}
+                </Typography>
+                <Typography variant="h6" color="primary">
+                  {product.price}
+                </Typography>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    marginTop: "10px",
+                    backgroundColor: " rgb(89, 143, 219)",
+                    "&:hover": {
+                      backgroundColor: "rgb(63, 136, 238)",
+                    },
+                  }}
+                >
+                  Add to Cart
+                </Button>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
-      <Footer />
     </Container>
   );
 };
