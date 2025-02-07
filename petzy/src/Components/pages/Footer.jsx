@@ -18,7 +18,7 @@ const Footer = () => {
 
         <div className="d-flex justify-content-center align-items-center gap-4 mb-4">
           <a
-            href="mailto:snehaaa120@gmail.com"
+            href="mailto:priontysaha003@gmail.com"
             className="text-muted text-decoration-none"
           >
             <i className="bi bi-envelope fs-4"></i>

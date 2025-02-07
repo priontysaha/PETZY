@@ -59,7 +59,7 @@ const Services = () => {
             <div className="text-center">
               <button
                 className="btn btn-warning text-white"
-                onClick={handleFindPetClick} // Add onClick handler
+                onClick={handleFindPetClick}
               >
                 Find Your Perfect Pet
               </button>
@@ -129,7 +129,7 @@ const Services = () => {
                   <option value="Bird">Bird</option>
                   <option value="Rabbit">Rabbit</option>
                   <option value="Fish">Fish</option>
-                  <option value="Other">Other</option>
+                  <option value="Other">Others</option>
                 </select>
               </div>
 

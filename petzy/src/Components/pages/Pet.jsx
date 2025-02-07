@@ -136,7 +136,7 @@ const Pet = () => {
           <option>Rabbit</option>
           <option>Fish</option>
           <option>Bird</option>
-          <option>Other</option>
+          <option>Others</option>
         </select>
       </div>
       <div className="row mt-4">
@@ -191,7 +191,7 @@ const Pet = () => {
             transition: background 0.2s ease-in-out;
           }
           .show-interest-btn:hover {
-            background: #ffcc00;
+            background:rgb(63, 136, 238);
           }
         `}
       </style>
