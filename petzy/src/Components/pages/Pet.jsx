@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ShowInterestForm from "./ShowInterestForm";
-import Footer from "./Footer";
 
 const petsData = [
   {
@@ -11,7 +10,7 @@ const petsData = [
     age: "2 weeks",
     location: "Dhanmondi,Dhaka",
     time: "about 1 hour ago",
-    image: "https://your-image-url.com/cat.jpg",
+    image: "https://your-image-url.com/cat1.jpg",
   },
   {
     id: 2,
@@ -19,16 +18,16 @@ const petsData = [
     type: "Dog",
     age: "2 years",
     location: "Tejgaon, Dhaka",
-    time: "1 day ago",
-    image: "https://your-image-url.com/dog.jpg",
+    time: "5 hours ago",
+    image: "https://your-image-url.com/dog1.jpg",
   },
   {
     id: 3,
     name: "Bella",
     type: "Dog",
-    age: "3 years",
+    age: "2 months",
     location: "Mirpur 10, Dhaka",
-    time: "2 days ago",
+    time: "11 hours ago",
     image: "https://your-image-url.com/dog2.jpg",
   },
   {
@@ -37,7 +36,7 @@ const petsData = [
     type: "Cat",
     age: "1 year",
     location: "Lalmatia, Dhaka",
-    time: "3 hours ago",
+    time: "19 hours ago",
     image: "https://your-image-url.com/cat2.jpg",
   },
   {
@@ -47,16 +46,16 @@ const petsData = [
     age: "1 year",
     location: "Naogaon, Rajshahi",
     time: "1 day ago",
-    image: "https://your-image-url.com/rabbit.jpg",
+    image: "https://your-image-url.com/rabbit1.jpg",
   },
   {
     id: 6,
     name: "Flopsy",
     type: "Rabbit",
-    age: "2 years",
+    age: "1.5 years",
     location: "Srimangal, Sylhet",
     time: "1 day ago",
-    image: "https://your-image-url.com/white-rabbit.jpg",
+    image: "https://your-image-url.com/white-rabbit2.jpg",
   },
   {
     id: 7,
@@ -64,7 +63,7 @@ const petsData = [
     type: "Fish",
     age: "6 months",
     location: "Uttora, Dhaka",
-    time: "4 hours ago",
+    time: "1 day ago",
     image: "https://your-image-url.com/fish.jpg",
   },
   {
@@ -72,8 +71,8 @@ const petsData = [
     name: "Polly",
     type: "Bird",
     age: "1 year",
-    location: "Bandorban, CTG",
-    time: "5 hours ago",
+    location: "Bandarban, CTG",
+    time: "1 day ago",
     image: "https://your-image-url.com/bird.jpg",
   },
   {
@@ -82,17 +81,44 @@ const petsData = [
     type: "Bird",
     age: "8 months",
     location: "Gazipur, Dhaka",
-    time: "6 hours ago",
+    time: "2 days ago",
     image: "https://your-image-url.com/bird2.jpg",
   },
   {
     id: 10,
     name: "Bubbles",
-    type: "Other",
+    type: "Ginipig",
     age: "1.5 years",
-    location: "Sitakundo, Dhaka",
-    time: "1 day ago",
-    image: "https://your-image-url.com/other.jpg",
+    location: "Sitakundo, CTG",
+    time: "2 days ago",
+    image: "https://your-image-url.com/other1ginipig.jpg",
+  },
+  {
+    id: 11,
+    name: "Tufan",
+    type: "Cat",
+    age: "2 months",
+    location: "Uttora, Dhaka",
+    time: "2 days ago",
+    image: "https://your-image-url.com/cat3.jpg",
+  },
+  {
+    id: 12,
+    name: "Galaxy",
+    type: "Dog",
+    age: "11 months",
+    location: "Mirpur 10, Dhaka",
+    time: "2 days ago",
+    image: "https://your-image-url.com/dog4.jpg",
+  },
+  {
+    id: 13,
+    name: "Toffee",
+    type: "Cat",
+    age: "2 years",
+    location: "Banasree, Dhaka",
+    time: "3 days ago",
+    image: "https://your-image-url.com/cat4.jpg",
   },
 ];
 
@@ -118,7 +144,7 @@ const Pet = () => {
 
   return (
     <div className="container mt-5 pt-5">
-      <h2 className="text-center text-warning fw-bold mt-4">
+      <h2 className="text-center text-primary fw-bold mt-4">
         Find Your New Friend 🐾
       </h2>
       <p className="text-center text-muted">
@@ -131,11 +157,11 @@ const Pet = () => {
           onChange={(e) => setFilter(e.target.value)}
         >
           <option>All Pets</option>
-          <option>Dog</option>
-          <option>Cat</option>
-          <option>Rabbit</option>
-          <option>Fish</option>
-          <option>Bird</option>
+          <option>Cats</option>
+          <option>Dogs</option>
+          <option>Rabbits</option>
+          <option>Fishes</option>
+          <option>Birds</option>
           <option>Others</option>
         </select>
       </div>
@@ -150,7 +176,7 @@ const Pet = () => {
                 style={{ height: "200px", objectFit: "cover" }}
               />
               <div className="card-body text-center">
-                <h5 className="fw-bold text-warning">{pet.name}</h5>
+                <h5 className="fw-bold text-primary">{pet.name}</h5>
                 <p className="text-muted">
                   <strong>Type:</strong> {pet.type} <br />
                   <strong>Age:</strong> {pet.age} <br />
@@ -158,7 +184,7 @@ const Pet = () => {
                   <small>{pet.time}</small>
                 </p>
                 <button
-                  className="btn btn-warning rounded-pill show-interest-btn"
+                  className="btn btn-primary rounded-pill show-interest-btn"
                   onClick={() => handleShowInterest(pet)}
                 >
                   Show Interest 🐾
@@ -191,7 +217,7 @@ const Pet = () => {
             transition: background 0.2s ease-in-out;
           }
           .show-interest-btn:hover {
-            background:rgb(63, 136, 238);
+            background: cornflowerblue;
           }
         `}
       </style>

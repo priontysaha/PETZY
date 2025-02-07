@@ -7,7 +7,7 @@ const ShowInterestForm = ({ pet, onClose }) => {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title text-warning fw-bold">
+            <h5 className="modal-title text-primary fw-bold">
               Pet Adoption Application
             </h5>
             <button
@@ -30,7 +30,7 @@ const ShowInterestForm = ({ pet, onClose }) => {
                 }}
               />
               <div>
-                <h6 className="fw-bold text-warning">{pet.name}</h6>
+                <h6 className="fw-bold text-primary">{pet.name}</h6>
                 <p className="text-muted mb-0">
                   <strong>Type:</strong> {pet.type} <br />
                   <strong>Age:</strong> {pet.age} <br />
@@ -79,7 +79,7 @@ const ShowInterestForm = ({ pet, onClose }) => {
                   placeholder="List other pets (if any)"
                 />
               </div>
-              <button type="submit" className="btn btn-warning w-100">
+              <button type="submit" className="btn btn-primary w-100">
                 Submit
               </button>
             </form>
