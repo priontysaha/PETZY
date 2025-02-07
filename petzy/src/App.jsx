@@ -12,6 +12,8 @@ import Donation from "./Components/pages/Donation";
 import Donatepage from "./Components/pages/Donatepage";
 import Contact from "./Components/pages/Contact";
 import Services from "./Components/pages/Services";
+import Cart from "./Components/pages/Cart";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +32,8 @@ function App() {
           <Route path="/donate" element={<Donatepage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />}></Route>
+          <Route path="/cart" element={<Cart />} />
+          
         </Routes>
       </BrowserRouter>
     </>
