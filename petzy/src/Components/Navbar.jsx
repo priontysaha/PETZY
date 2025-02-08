@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Navbar.css"; // Optional custom styles
+import "./Navbar.css";
 import {
   FaHome,
   FaPaw,
@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <NavLink to="/home" className="nav-link">
+              <NavLink to="/" className="nav-link">
                 <FaHome className="me-1" /> Home
               </NavLink>
             </li>

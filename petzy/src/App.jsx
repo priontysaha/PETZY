@@ -14,7 +14,6 @@ import Contact from "./Components/pages/Contact";
 import Services from "./Components/pages/Services";
 import Cart from "./Components/pages/Cart";
 
-
 function App() {
   const [count, setCount] = useState(0);
 
@@ -23,9 +22,9 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
+          <Route index element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/home" element={<Home />}></Route>
           <Route path="/pet" element={<Pet />}></Route>
           <Route path="/pet_store" element={<Pet_Store />}></Route>
           <Route path="/donation" element={<Donation />}></Route>
@@ -33,7 +32,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />}></Route>
           <Route path="/cart" element={<Cart />} />
-          
         </Routes>
       </BrowserRouter>
     </>
