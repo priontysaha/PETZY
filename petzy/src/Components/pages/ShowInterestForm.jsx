@@ -2,12 +2,18 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ShowInterestForm = ({ pet, onClose }) => {
+
+  const handleConfirmation = () => {
+    alert("Your request is pending.");
+    navigate("/home");
+  };
+
   return (
     <div className="modal show d-block" tabIndex="-1">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title text-primary fw-bold">
+            <h5 className="modal-title" style={{ color: "rgb(63, 136, 238)" }}>
               Pet Adoption Application
             </h5>
             <button
@@ -30,7 +36,9 @@ const ShowInterestForm = ({ pet, onClose }) => {
                 }}
               />
               <div>
-                <h6 className="fw-bold text-primary">{pet.name}</h6>
+                <h6 className="fw-bold" style={{ color: "rgb(63, 136, 238)" }}>
+                  {pet.name}
+                </h6>
                 <p className="text-muted mb-0">
                   <strong>Type:</strong> {pet.type} <br />
                   <strong>Age:</strong> {pet.age} <br />
@@ -79,7 +87,12 @@ const ShowInterestForm = ({ pet, onClose }) => {
                   placeholder="List other pets (if any)"
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button
+                type="submit"
+                className="btn w-100"
+                style={{ backgroundColor: "rgb(63, 136, 238)", borderColor: "rgb(63, 136, 238)" }}
+                onClick={handleConfirmation}
+              >
                 Submit
               </button>
             </form>

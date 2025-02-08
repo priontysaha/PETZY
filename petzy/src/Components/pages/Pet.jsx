@@ -12,7 +12,7 @@ const petsData = [
   { id: 7, name: "Goldie", type: "Fish", age: "6 months", location: "Uttora, Dhaka", time: "1 day ago", image: "./fish.jpg" },
   { id: 8, name: "Polly", type: "Bird", age: "1 year", location: "Bandarban, CTG", time: "1 day ago", image: "./bird1.jpg" },
   { id: 9, name: "Tweety", type: "Bird", age: "8 months", location: "Gazipur, Dhaka", time: "2 days ago", image: "./bird2.jpg" },
-  { id: 10, name: "Bubbles", type: "other", age: "1.5 years", location: "Sitakundo, CTG", time: "2 days ago", image: "./other1ginipig.jpg" },
+  { id: 10, name: "Bubbles", type: "Other", age: "1.5 years", location: "Sitakundo, CTG", time: "2 days ago", image: "./other1ginipig.jpg" },
   { id: 11, name: "Tufan", type: "Cat", age: "2 months", location: "Uttora, Dhaka", time: "2 days ago", image: "./cat3.jpg" },
   { id: 12, name: "Galaxy", type: "Dog", age: "11 months", location: "Mirpur 10, Dhaka", time: "2 days ago", image: "./dog4.jpg" },
   { id: 13, name: "Toffee", type: "Cat", age: "2 years", location: "Banasree, Dhaka", time: "3 days ago", image: "./cat4.jpg" },
@@ -38,7 +38,7 @@ const Pet = () => {
 
   return (
     <div className="container mt-5 pt-5">
-      <h2 className="text-center text-primary fw-bold mt-4">Find Your New Friend 🐾</h2>
+      <h2 className="text-center" style={{ color: "rgb(63, 136, 238)" }}>Find Your New Friend 🐾</h2>
       <p className="text-center text-muted">Browse through adorable pets looking for a home.</p>
       <div className="d-flex justify-content-end mb-3">
         <select className="form-select w-auto" value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -57,14 +57,14 @@ const Pet = () => {
             <div className="card shadow-sm pet-card">
               <img src={pet.image} className="card-img-top" alt={pet.name} style={{ height: "200px", objectFit: "cover" }} />
               <div className="card-body text-center">
-                <h5 className="fw-bold text-primary">{pet.name}</h5>
+                <h5 className="fw-bold" style={{ color: "rgb(63, 136, 238)" }}>{pet.name}</h5>
                 <p className="text-muted">
                   <strong>Type:</strong> {pet.type} <br />
                   <strong>Age:</strong> {pet.age} <br />
                   <strong>Location:</strong> {pet.location} <br />
                   <small>{pet.time}</small>
                 </p>
-                <button className="btn btn-primary rounded-pill show-interest-btn" onClick={() => handleShowInterest(pet)}>
+                <button className="btn" style={{ backgroundColor: "rgb(63, 136, 238)", color: "white" }} onClick={() => handleShowInterest(pet)}>
                   Show Interest 🐾
                 </button>
               </div>
@@ -79,4 +79,3 @@ const Pet = () => {
 };
 
 export default Pet;
-
