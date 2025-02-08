@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Box, Avatar } from "@mui/material";
+import {
+  Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Box, Avatar,
+} from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const paymentMethods = ["Cash on Delivery (COD)", "Bkash", "Rocket", "Nagad"];
@@ -19,7 +21,8 @@ const Cart = () => {
   const product = location.state?.product;
 
   if (!product) {
-    return <Typography variant="h5">No product selected. Please go back and add a product to the cart.</Typography>;
+    navigate("/pet_store");
+    return null;
   }
 
   const handleInputChange = (e) => {
@@ -30,6 +33,10 @@ const Cart = () => {
   const handleOrderConfirmation = () => {
     alert("Order confirmed! Thank you for your purchase.");
     navigate("/home");
+  };
+
+  const handleDeleteItem = () => {
+    navigate("/pet_store");
   };
 
   return (
@@ -75,6 +82,18 @@ const Cart = () => {
                   size="small"
                   style={{ width: "80px" }}
                 />
+              </Box>
+              <Box display="flex" justifyContent="space-between" marginTop="20px">
+                <Button variant="outlined" color="secondary" onClick={handleDeleteItem}>
+                  Delete Item
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "rgb(63, 136, 238)", color: "white" }}
+                  onClick={() => navigate("/pet_store")}
+                >
+                  Add More Items
+                </Button>
               </Box>
             </CardContent>
           </Card>
