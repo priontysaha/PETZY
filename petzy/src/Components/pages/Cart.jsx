@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Box } from "@mui/material";
+import { Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Box, Avatar } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const paymentMethods = ["Cash on Delivery (COD)", "Bkash", "Rocket", "Nagad"];
@@ -33,35 +33,59 @@ const Cart = () => {
   };
 
   return (
-    <Container style={{marginBottom: "50px", fontFamily: "'Poppins', sans-serif", marginTop: "100px"}}>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
-        Your Cart
-      </Typography>
-      <Grid container spacing={3}>
+    <Container style={{ marginBottom: "10px", fontFamily: "'Poppins', sans-serif", marginTop: "100px" }}>
+      <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
-          <Card>
+          <Box display="flex" justifyContent="center" marginBottom="30px">
+            <Avatar
+              src="/Cart.webp"
+              alt="Cart Image"
+              style={{
+                width: "150px",
+                height: "150px",
+                border: "4px solid rgba(63, 136, 238, 0.8)",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+              }}
+            />
+          </Box>
+
+          <Card style={{ borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
             <CardContent>
-              <Typography variant="h5" fontWeight="bold">{product.name}</Typography>
-              <Typography variant="body2" color="textSecondary" gutterBottom>{product.description}</Typography>
-              <Typography variant="h6" color="primary">Price: {product.price}</Typography>
-              <Box display="flex" alignItems="center" marginTop="10px">
-                <Typography>Quantity:</Typography>
+              <Typography variant="h4" fontWeight="bold" gutterBottom>
+                Your Cart
+              </Typography>
+              <Typography variant="h5" fontWeight="bold" gutterBottom>
+                {product.name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" gutterBottom style={{ marginBottom: "10px" }}>
+                {product.description}
+              </Typography>
+              <Typography variant="h6" color="primary" style={{ marginBottom: "20px" }}>
+                Price: {product.price}
+              </Typography>
+              <Box display="flex" alignItems="center" marginBottom="10px">
+                <Typography variant="body1" style={{ marginRight: "10px" }}>
+                  Quantity:
+                </Typography>
                 <TextField
                   type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                   inputProps={{ min: 1 }}
                   size="small"
-                  style={{ marginLeft: "10px", width: "80px" }}
+                  style={{ width: "80px" }}
                 />
               </Box>
             </CardContent>
           </Card>
         </Grid>
+
         <Grid item xs={12} md={4}>
-          <Card>
+          <Card style={{ borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
             <CardContent>
-              <Typography variant="h6" fontWeight="bold">Customer Details</Typography>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>
+                Customer Details
+              </Typography>
               <TextField
                 label="Name"
                 fullWidth
@@ -69,6 +93,7 @@ const Cart = () => {
                 name="name"
                 value={customerInfo.name}
                 onChange={handleInputChange}
+                style={{ marginBottom: "15px" }}
               />
               <TextField
                 label="Phone Number"
@@ -77,6 +102,7 @@ const Cart = () => {
                 name="phone"
                 value={customerInfo.phone}
                 onChange={handleInputChange}
+                style={{ marginBottom: "15px" }}
               />
               <TextField
                 label="Email"
@@ -85,6 +111,7 @@ const Cart = () => {
                 name="email"
                 value={customerInfo.email}
                 onChange={handleInputChange}
+                style={{ marginBottom: "15px" }}
               />
               <TextField
                 label="Address"
@@ -93,6 +120,7 @@ const Cart = () => {
                 name="address"
                 value={customerInfo.address}
                 onChange={handleInputChange}
+                style={{ marginBottom: "15px" }}
               />
               <TextField
                 select
@@ -102,16 +130,23 @@ const Cart = () => {
                 name="paymentMethod"
                 value={customerInfo.paymentMethod}
                 onChange={handleInputChange}
+                style={{ marginBottom: "15px" }}
               >
                 {paymentMethods.map((method, index) => (
-                  <MenuItem key={index} value={method}>{method}</MenuItem>
+                  <MenuItem key={index} value={method}>
+                    {method}
+                  </MenuItem>
                 ))}
               </TextField>
               <Button
                 variant="contained"
-                color="primary"
                 fullWidth
-                style={{ marginTop: "10px", backgroundColor: "rgb(63, 136, 238)" }}
+                style={{
+                  marginTop: "20px",
+                  backgroundColor: "rgb(63, 136, 238)",
+                  color: "white",
+                  fontWeight: "bold",
+                }}
                 onClick={handleOrderConfirmation}
               >
                 Confirm Order
@@ -120,6 +155,7 @@ const Cart = () => {
           </Card>
         </Grid>
       </Grid>
+      <footer className="text-center text-muted mt-5 pb-4">© 2025 Petzy - Your Path to Pet Adoption</footer>
     </Container>
   );
 };

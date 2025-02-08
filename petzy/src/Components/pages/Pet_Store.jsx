@@ -1,13 +1,12 @@
 import React from "react";
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
-//import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 const products = [
   { id: 1, name: "Premium Dog Food", price: "৳2000", image: "./dog_food.webp", description: "High-quality dog food for a healthy diet." },
   { id: 2, name: "Cat Litter Box", price: "৳350", image: "./cat_litter.jpeg", description: "Durable and easy-to-clean litter box." },
   { id: 3, name: "Pet Feeding Bowl", price: "৳150", image: "./pet_feeding_bowl.avif", description: "Stainless steel pet feeding bowl." },
-  { id: 4, name: "Chew Toy", price: "$300", image: "./chew_toy.jpg", description: "Safe and fun chew toy for pets." },
+  { id: 4, name: "Chew Toy", price: "৳300", image: "./chew_toy.jpg", description: "Safe and fun chew toy for pets." },
   { id: 5, name: "Bird Feeder", price: "৳1000", image: "./bird_feeder.jpg", description: "Ideal feeder for birds with easy refill system." },
   { id: 6, name: "Hamster Cage", price: "৳4000", image: "./hamster_cage.jpg", description: "Spacious and ventilated cage for hamsters." },
   { id: 7, name: "Fish Tank", price: "৳2000", image: "./fish_tank.webp", description: "Stylish and durable fish tank." },
@@ -28,10 +27,17 @@ const Pet_Store = () => {
     navigate("/cart", { state: { product } });
   };
   return (
-    <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif", marginTop: "100px", marginBottom: "100px"}}>
-      <Typography variant="h3" style={{ color: "cornflowerblue", fontWeight: "bold", textAlign: "center", marginBottom: "20px", }}>
+    <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif", marginTop: "70px", marginBottom: "10px"}}>
+      <Typography variant="h4" style={{ color: "cornflowerblue", fontWeight: "bold", textAlign: "center", marginBottom: "5px", }}>
         Welcome to Our Pet Store!🐾
       </Typography>
+      <Typography 
+  variant="body1" 
+  style={{ textAlign: "center", color: "gray", marginBottom: "80px" }}
+>
+  Because your pet deserves the best!
+</Typography>
+      
       <Grid container spacing={5}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
