@@ -4,7 +4,7 @@ import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } fro
 import { useNavigate } from "react-router-dom";
 
 const products = [
-  { id: 1, name: "Premium Dog Food", price: "৳2000", image: "./dog_food.jpeg", description: "High-quality dog food for a healthy diet." },
+  { id: 1, name: "Premium Dog Food", price: "৳2000", image: "./dog_food.webp", description: "High-quality dog food for a healthy diet." },
   { id: 2, name: "Cat Litter Box", price: "৳350", image: "./cat_litter.jpeg", description: "Durable and easy-to-clean litter box." },
   { id: 3, name: "Pet Feeding Bowl", price: "৳150", image: "./pet_feeding_bowl.avif", description: "Stainless steel pet feeding bowl." },
   { id: 4, name: "Chew Toy", price: "$300", image: "./chew_toy.jpg", description: "Safe and fun chew toy for pets." },
@@ -30,13 +30,13 @@ const Pet_Store = () => {
   return (
     <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif", marginTop: "100px", marginBottom: "100px"}}>
       <Typography variant="h3" style={{ color: "cornflowerblue", fontWeight: "bold", textAlign: "center", marginBottom: "20px", }}>
-        Welcome to Our Pet Store!
+        Welcome to Our Pet Store!🐾
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
             <Card>
-              <CardMedia component="img" height="200" image={product.image} alt={product.name} />
+              <CardMedia component="img" height="300" image={product.image} alt={product.name} />
               <CardContent>
                 <Typography variant="h6" fontWeight="bold">
                   {product.name}
@@ -68,6 +68,7 @@ const Pet_Store = () => {
           </Grid>
         ))}
       </Grid>
+      <footer className="text-center text-muted mt-5 pb-4">© 2025 Petzy - Your Path to Pet Adoption</footer>
     </Container>
   );
 };

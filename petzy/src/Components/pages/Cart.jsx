@@ -33,7 +33,7 @@ const Cart = () => {
   };
 
   return (
-    <Container style={{ marginTop: "50px", marginBottom: "50px", fontFamily: "'Poppins', sans-serif", marginTop: "100px"}}>
+    <Container style={{marginBottom: "50px", fontFamily: "'Poppins', sans-serif", marginTop: "100px"}}>
       <Typography variant="h4" fontWeight="bold" gutterBottom>
         Your Cart
       </Typography>
