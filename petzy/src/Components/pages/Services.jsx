@@ -9,22 +9,26 @@ const Services = () => {
     navigate("/pet");
   };
 
+  const handleSubmitPetClick = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="container py-5 mt-4">
       <div className="row">
         <div className="col-md-6">
           <div className="p-4 border rounded shadow">
-            <h2 className="text-warning fw-bold text-center">Adopt a Pet</h2>
+            <h2 className="text-primary fw-bold text-center">Adopt a Pet</h2>
 
             <div className="d-flex justify-content-center my-3">
               <img
-                src="/images/adopt-pet1.png"
+                src="Adoptpet1.png"
                 alt="Adopt a Pet"
                 className="img-fluid mx-2"
                 width="200"
               />
               <img
-                src="/images/adopt-pet2.png"
+                src="Adoptpet2.png"
                 alt="Adopt a Pet"
                 className="img-fluid mx-2"
                 width="200"
@@ -36,21 +40,21 @@ const Services = () => {
               companionship into your life.
             </p>
 
-            <h5 className="fw-bold text-warning">Benefits of Pet Adoption</h5>
+            <h5 className="fw-bold text-primary">Benefits of Pet Adoption</h5>
             <ul>
               <li>Provide a loving home to a pet in need</li>
               <li>Experience unconditional love</li>
               <li>Create lasting memories</li>
             </ul>
 
-            <h5 className="fw-bold text-warning">Adoption Process</h5>
+            <h5 className="fw-bold text-primary">Adoption Process</h5>
             <ul>
               <li>Fill out an adoption application</li>
               <li>Meet potential pets in person</li>
               <li>Complete necessary paperwork</li>
             </ul>
 
-            <h5 className="fw-bold text-warning">Responsibilities</h5>
+            <h5 className="fw-bold text-primary">Responsibilities</h5>
             <p>
               Adopting a pet comes with responsibilities, including feeding,
               grooming, regular exercise, and medical care.
@@ -58,7 +62,7 @@ const Services = () => {
 
             <div className="text-center">
               <button
-                className="btn btn-warning text-white"
+                className="btn btn-primary text-white"
                 onClick={handleFindPetClick}
               >
                 Find Your Perfect Pet
@@ -69,22 +73,16 @@ const Services = () => {
 
         <div className="col-md-6">
           <div className="p-4 border rounded shadow">
-            <h2 className="text-warning fw-bold text-center">
+            <h2 className="text-primary fw-bold text-center">
               Post a Pet for Adoption
             </h2>
 
             <div className="d-flex justify-content-center my-3">
               <img
-                src="/images/post-pet1.png"
+                src="Postpet1.png"
                 alt="Post a Pet"
                 className="img-fluid mx-2"
-                width="200"
-              />
-              <img
-                src="/images/post-pet2.png"
-                alt="Post a Pet"
-                className="img-fluid mx-2"
-                width="200"
+                width="300"
               />
             </div>
 
@@ -134,7 +132,7 @@ const Services = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label fw-bold text-warning">
+                <label className="form-label fw-bold text-primary">
                   Reason for Giving a Pet:
                 </label>
                 <textarea
@@ -144,7 +142,7 @@ const Services = () => {
                 ></textarea>
               </div>
 
-              <h5 className="text-warning fw-bold">Contact Information</h5>
+              <h5 className="text-primary fw-bold">Contact Information</h5>
               <div className="mb-3">
                 <label className="form-label">Email:</label>
                 <input
@@ -164,7 +162,11 @@ const Services = () => {
               </div>
 
               <div className="text-center">
-                <button type="submit" className="btn btn-warning text-white">
+                <button
+                  type="button"
+                  className="btn btn-primary text-white"
+                  onClick={handleSubmitPetClick}
+                >
                   Submit Your Pet
                 </button>
               </div>
