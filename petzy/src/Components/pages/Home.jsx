@@ -8,7 +8,7 @@ const Home = () => {
       <div>
         <section
           className="container text-center py-5"
-          style={{ marginTop: "100px" }}
+          style={{ marginTop: "80px" }}
         >
           <div className="row align-items-center">
             <div className="col-md-6">
@@ -25,6 +25,7 @@ const Home = () => {
                 href="/services"
                 className="btn btn-lg"
                 style={{
+                  marginTop: "40px",
                   background:
                     "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
                   border: "none",
@@ -55,7 +56,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="text-center py-5" style={{ marginTop: "100px" }}>
+        <section className="text-center py-5" style={{ marginTop: "40px" }}>
           <div className="container w-60 mx-auto bg-dark text-white p-4 rounded-3 shadow-lg">
             <h2 className="fw-bold">
               1.2K+ Furry Friends Living Their Best Lives
