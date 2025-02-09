@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import {
-  Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Box, Avatar,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  TextField,
+  MenuItem,
+  Box,
+  Avatar,
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -32,7 +41,7 @@ const Cart = () => {
 
   const handleOrderConfirmation = () => {
     alert("Order confirmed! Thank you for your purchase.");
-    navigate("/home");
+    navigate("/pet_store");
   };
 
   const handleDeleteItem = () => {
@@ -40,7 +49,13 @@ const Cart = () => {
   };
 
   return (
-    <Container style={{ marginBottom: "10px", fontFamily: "'Poppins', sans-serif", marginTop: "100px" }}>
+    <Container
+      style={{
+        marginBottom: "10px",
+        fontFamily: "'Poppins', sans-serif",
+        marginTop: "100px",
+      }}
+    >
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
           <Box display="flex" justifyContent="center" marginBottom="30px">
@@ -56,7 +71,12 @@ const Cart = () => {
             />
           </Box>
 
-          <Card style={{ borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+          <Card
+            style={{
+              borderRadius: "10px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          >
             <CardContent>
               <Typography variant="h4" fontWeight="bold" gutterBottom>
                 Your Cart
@@ -64,10 +84,19 @@ const Cart = () => {
               <Typography variant="h5" fontWeight="bold" gutterBottom>
                 {product.name}
               </Typography>
-              <Typography variant="body2" color="textSecondary" gutterBottom style={{ marginBottom: "10px" }}>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                gutterBottom
+                style={{ marginBottom: "10px" }}
+              >
                 {product.description}
               </Typography>
-              <Typography variant="h6" color="primary" style={{ marginBottom: "20px" }}>
+              <Typography
+                variant="h6"
+                color="primary"
+                style={{ marginBottom: "20px" }}
+              >
                 Price: {product.price}
               </Typography>
               <Box display="flex" alignItems="center" marginBottom="10px">
@@ -83,13 +112,24 @@ const Cart = () => {
                   style={{ width: "80px" }}
                 />
               </Box>
-              <Box display="flex" justifyContent="space-between" marginTop="20px">
-                <Button variant="outlined" color="secondary" onClick={handleDeleteItem}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginTop="20px"
+              >
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleDeleteItem}
+                >
                   Delete Item
                 </Button>
                 <Button
                   variant="contained"
-                  style={{ backgroundColor: "rgb(63, 136, 238)", color: "white" }}
+                  style={{
+                    backgroundColor: "rgb(63, 136, 238)",
+                    color: "white",
+                  }}
                   onClick={() => navigate("/pet_store")}
                 >
                   Add More Items
@@ -100,7 +140,12 @@ const Cart = () => {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <Card style={{ borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+          <Card
+            style={{
+              borderRadius: "10px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          >
             <CardContent>
               <Typography variant="h6" fontWeight="bold" gutterBottom>
                 Customer Details
@@ -174,7 +219,9 @@ const Cart = () => {
           </Card>
         </Grid>
       </Grid>
-      <footer className="text-center text-muted mt-5 pb-4">© 2025 Petzy - Your Path to Pet Adoption</footer>
+      <footer className="text-center text-muted mt-5 pb-4">
+        © 2025 Petzy - Your Path to Pet Adoption
+      </footer>
     </Container>
   );
 };
