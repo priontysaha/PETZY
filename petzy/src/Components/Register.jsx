@@ -1,3 +1,6 @@
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import {
   Button,
   Grid,
@@ -9,12 +12,17 @@ import {
   Link,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import React, { useState } from "react";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
+
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().min(6, "Too short").required("Required"),
+  });
 
   const styles = {
     heading: {
@@ -54,49 +62,75 @@ const Register = () => {
         }}
       >
         <Typography style={styles.heading}>Create Your Account</Typography>
-        <form>
-          <TextField
-            sx={{ label: { fontWeight: "700", fontSize: "1.3rem" } }}
-            style={styles.input}
-            label="Full Name"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            sx={{ label: { fontWeight: "700", fontSize: "1.3rem" } }}
-            style={styles.input}
-            label="Email Address"
-            type="email"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            sx={{ label: { fontWeight: "700", fontSize: "1.3rem" } }}
-            style={styles.input}
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={togglePasswordVisibility}>
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Button variant="contained" style={styles.button} fullWidth>
-            Register
-          </Button>
-          <Typography style={styles.linkText}>
-            Already have an account?{" "}
-            <Link href="/login" underline="hover">
-              Login here
-            </Link>
-          </Typography>
-        </form>
+        <Formik
+          initialValues={{ fullName: "", email: "", password: "" }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <Field
+                as={TextField}
+                style={styles.input}
+                label="Full Name"
+                name="fullName"
+                variant="outlined"
+                fullWidth
+                error={false}
+                helperText={<ErrorMessage name="fullName" />}
+              />
+              <Field
+                as={TextField}
+                style={styles.input}
+                label="Email Address"
+                type="email"
+                name="email"
+                variant="outlined"
+                fullWidth
+                error={false}
+                helperText={<ErrorMessage name="email" />}
+              />
+              <Field
+                as={TextField}
+                style={styles.input}
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                variant="outlined"
+                fullWidth
+                error={false}
+                helperText={<ErrorMessage name="password" />}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={togglePasswordVisibility}>
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                style={styles.button}
+                fullWidth
+                disabled={isSubmitting}
+              >
+                Register
+              </Button>
+              <Typography style={styles.linkText}>
+                Already have an account?{" "}
+                <Link href="/login" underline="hover">
+                  Login here
+                </Link>
+              </Typography>
+            </Form>
+          )}
+        </Formik>
       </Paper>
     </Grid>
   );

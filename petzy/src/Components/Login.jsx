@@ -1,3 +1,6 @@
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import {
   Button,
   Grid,
@@ -11,7 +14,6 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import React, { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +21,11 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().min(6, "Too short").required("Required"),
+  });
 
   const styles = {
     heading: {
@@ -58,56 +65,85 @@ const Login = () => {
         }}
       >
         <Typography style={styles.heading}>Login to Your Account</Typography>
-        <form>
-          <TextField
-            sx={{ label: { fontWeight: "700", fontSize: "1.3rem" } }}
-            style={styles.input}
-            label="Email Address"
-            type="email"
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            sx={{ label: { fontWeight: "700", fontSize: "1.3rem" } }}
-            style={styles.input}
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={togglePasswordVisibility}
-                    edge="end"
-                    aria-label="toggle password visibility"
-                  >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <FormControlLabel
-            control={<Checkbox color="primary" />}
-            label="Remember me"
-          />
-          <Button variant="contained" style={styles.button} fullWidth>
-            Login
-          </Button>
-          <Typography style={styles.linkText}>
-            <Link href="/forgot-password" underline="hover">
-              Forgot Password?
-            </Link>
-          </Typography>
-          <Typography style={styles.linkText}>
-            Don't have an account?{" "}
-            <Link href="/register" underline="hover">
-              Create one here
-            </Link>
-          </Typography>
-        </form>
+        <Formik
+          initialValues={{ email: "", password: "", remember: false }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting, handleChange, values }) => (
+            <Form>
+              <Field
+                as={TextField}
+                style={styles.input}
+                label="Email Address"
+                type="email"
+                name="email"
+                variant="outlined"
+                fullWidth
+                error={!!values.email && values.email.length > 0}
+                helperText={<ErrorMessage name="email" />}
+              />
+              <Field
+                as={TextField}
+                style={styles.input}
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                variant="outlined"
+                fullWidth
+                error={!!values.password && values.password.length > 0}
+                helperText={<ErrorMessage name="password" />}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={togglePasswordVisibility}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <FormControlLabel
+                control={
+                  <Field
+                    as={Checkbox}
+                    type="checkbox"
+                    name="remember"
+                    color="primary"
+                  />
+                }
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                style={styles.button}
+                fullWidth
+                disabled={isSubmitting}
+              >
+                Login
+              </Button>
+              <Typography style={styles.linkText}>
+                <Link href="/forgot-password" underline="hover">
+                  Forgot Password?
+                </Link>
+              </Typography>
+              <Typography style={styles.linkText}>
+                Don't have an account?{" "}
+                <Link href="/register" underline="hover">
+                  Create one here
+                </Link>
+              </Typography>
+            </Form>
+          )}
+        </Formik>
       </Paper>
     </Grid>
   );
