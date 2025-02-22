@@ -26,24 +26,44 @@ const Pet_Store = () => {
   const handleAddToCart = (product) => {
     navigate("/cart", { state: { product } });
   };
+
   return (
-    <Container style={{ padding: "20px", fontFamily: "'Poppins', sans-serif", marginTop: "70px", marginBottom: "10px"}}>
-      <Typography variant="h4" style={{ color: "cornflowerblue", fontWeight: "bold", textAlign: "center", marginBottom: "5px", }}>
+    <Container
+      style={{
+        padding: "20px",
+        fontFamily: "'Poppins', sans-serif",
+        marginTop: "70px",
+        marginBottom: "10px",
+      }}
+    >
+      <Typography
+        variant="h4"
+        style={{
+          color: "cornflowerblue",
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: "5px",
+        }}
+      >
         Welcome to Our Pet Store!🐾
       </Typography>
-      <Typography 
-  variant="body1" 
-  style={{ textAlign: "center", color: "gray", marginBottom: "80px" }}
->
-  Because your pet deserves the best!
-</Typography>
-      
-      <Grid container spacing={5}>
+      <Typography variant="body1" style={{ textAlign: "center", color: "gray", marginBottom: "50px" }}>
+        Because your pet deserves the best!
+      </Typography>
+
+      {/* Grid container for products */}
+      <Grid container spacing={4} justifyContent="center">
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
-            <Card>
-              <CardMedia component="img" height="300" image={product.image} alt={product.name} />
-              <CardContent>
+            <Card style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image={product.image}
+                alt={product.name}
+                style={{ objectFit: "cover" }} // Ensures images fit consistently
+              />
+              <CardContent style={{ flexGrow: 1 }}>
                 <Typography variant="h6" fontWeight="bold">
                   {product.name}
                 </Typography>
@@ -53,27 +73,25 @@ const Pet_Store = () => {
                 <Typography variant="h6" color="primary">
                   {product.price}
                 </Typography>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{
-                    marginTop: "10px",
-                    backgroundColor: " rgb(89, 143, 219)",
-                    "&:hover": {
-                      backgroundColor: "rgb(63, 136, 238)",
-                    },
-                  }}
-
-                  onClick={() => handleAddToCart(product)}
-                  
-                >
-                  Add to Cart
-                </Button>
               </CardContent>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  backgroundColor: "rgb(89, 143, 219)",
+                  "&:hover": {
+                    backgroundColor: "rgb(63, 136, 238)",
+                  },
+                }}
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to Cart
+              </Button>
             </Card>
           </Grid>
         ))}
       </Grid>
+
       <footer className="text-center text-muted mt-5 pb-4">© 2025 Petzy - Your Path to Pet Adoption</footer>
     </Container>
   );
