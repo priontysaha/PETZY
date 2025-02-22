@@ -1,71 +1,50 @@
 import express from "express";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
-import User from "./models/User.js";
+import { users, addUser, removeUser } from "./data.js";
 
 const PORT = 3000;
 const app = express();
-const JWT_SECRET = "your_jwt_secret_key";
 
 app.use(express.json());
 
-mongoose
-  .connect("mongodb://localhost:27017/petzy", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((error) => console.log("MongoDB connection error:", error));
-
-app.post("/register", async (req, res) => {
-  try {
-    const { fullName, email, password } = req.body;
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    const newUser = new User({
-      fullName,
-      email,
-      password: hashedPassword,
-    });
-
-    await newUser.save();
-    res.status(201).json({ message: "User registered successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Error registering user", error });
-  }
+app.get("/", (req, res) => {
+  res.send("Petzy backend server ready!");
 });
-app.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
-    }
+app.get("/pets/", (req, res) => {
+  res.send("There are 3 pets");
+});
+app.get("/users", (req, res) => {
+  return res.status(200).json(users);
+});
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
-    }
+app.post("/users", (req, res) => {
+  const { name, email } = req.body;
 
-    const token = jwt.sign({ userId: user._id }, "your_secret_key", {
-      expiresIn: "1h",
-    });
-
-    res.status(200).json({ message: "Login successful", token });
-  } catch (error) {
-    res.status(500).json({ message: "Error logging in", error });
+  const anotherUser = users.find((user) => user.email === email);
+  if (anotherUser) {
+    return res.status(400).json({ error: "Email is already in use." });
   }
+
+  addUser({ name, email });
+
+  return res.status(201).json({ message: "New user created" });
+});
+
+app.delete("/users/:email", (req, res) => {
+  const { email } = req.params;
+
+  const user = users.find((user) => user.email === email);
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  const newUsers = users.filter((user) => user.email !== email);
+
+  removeUser(newUsers);
+
+  return res.status(200).json({ message: "User deleted" });
 });
 
 app.listen(PORT, () => {
-  console.log(`App is up and listening on http://localhost:${PORT}`);
+  console.log("App is up and listening to http://localhost:" + PORT);
 });
