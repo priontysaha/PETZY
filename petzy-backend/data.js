@@ -23,3 +23,14 @@ export const removeUser = (usersAfterDelete) => {
     }
   });
 };
+
+export const updateUser = (updateUsers) => {
+  const userStr = JSON.stringify(updateUsers);
+  fs.writeFile("./data.json", userStr, (err) => {
+    if (err) {
+      console.log("Error writing file", err);
+    } else {
+      console.log("Successfully wrote file");
+    }
+  });
+};

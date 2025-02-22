@@ -1,5 +1,6 @@
 import express from "express";
-import { users, addUser, removeUser } from "./data.js";
+import { users, addUser, removeUser, updateUser } from "./data.js";
+import userRouter from "./routes/userRoutes.js";
 
 const PORT = 3000;
 const app = express();
@@ -13,22 +14,8 @@ app.get("/", (req, res) => {
 app.get("/pets/", (req, res) => {
   res.send("There are 3 pets");
 });
-app.get("/users", (req, res) => {
-  return res.status(200).json(users);
-});
 
-app.post("/users", (req, res) => {
-  const { name, email } = req.body;
-
-  const anotherUser = users.find((user) => user.email === email);
-  if (anotherUser) {
-    return res.status(400).json({ error: "Email is already in use." });
-  }
-
-  addUser({ name, email });
-
-  return res.status(201).json({ message: "New user created" });
-});
+app.use("/users", userRouter);
 
 app.delete("/users/:email", (req, res) => {
   const { email } = req.params;
