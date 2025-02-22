@@ -2,16 +2,18 @@ import express from "express";
 import userRouter from "./routes/userRoutes.js";
 import { log } from "./middlewares/logger.js";
 import mongoose from "mongoose";
+import "dotenv/config";
 
-const PORT = 3000;
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://Priontysaha:priontysaha003@cluster.to8fx.mongodb.net/"
-  )
+  .connect(process.env.DB_URL)
   .then(() => console.log("Database connected "))
   .catch((err) => console.log(`Error connecting database ${err}`));
+
+const PORT = process.env.PORT || 3000;
+
+console.log(process.env.DB_URL);
 
 app.use(express.json());
 app.use(log);
@@ -27,5 +29,5 @@ app.get("/pets/", (req, res) => {
 app.use("/users", userRouter);
 
 app.listen(PORT, () => {
-  console.log("App is up and listening to http://localhost:" + PORT);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
