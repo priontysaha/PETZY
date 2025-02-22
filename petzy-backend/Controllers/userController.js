@@ -1,51 +1,58 @@
-import { users, addUser, updateUser, removeUser } from "../data.js";
+import User from "../models/user.js";
 
-export const getAllUsers = (req, res) => {
-  return res.status(200).json(users);
+export const getAllUsers = async (req, res) => {
+  const allUsers = await User.find().select(["-__v"]);
+  return res.status(200).json(allUsers);
 };
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
   const { name, email } = req.body;
 
-  const anotherUser = users.find((user) => user.email === email);
+  const anotherUser = await User.exists({ email });
   if (anotherUser) {
     return res.status(400).json({ error: "Email  is already in use." });
   }
 
-  addUser({ name, email });
+  const newUser = await User.create({ email, name });
 
-  return res.status(201).json({ message: "New user created" });
+  return res.status(201).json({ newUser });
 };
 
-export const updateUserByEmail = (req, res) => {
+export const updateUserByEmail = async (req, res) => {
   const { email } = req.params;
   const { name: newName, email: newEmail } = req.body;
 
-  const user = users.find((user) => user.email === email);
+  const user = await User.findOne({ email });
+  console.log(user);
 
   if (!user) {
     return res.status(404).json({ message: "User not found" });
   }
 
-  user.name = newName;
-  user.email = newEmail;
+  const anotherUser = await User.findOne({ email: newEmail });
 
-  updateUser(users);
+  if (anotherUser && anotherUser.id !== user.id) {
+    return res.status(400).json({ error: "User is already in use" });
+  }
+
+  user.email = newEmail;
+  user.name = newName;
+  user.save();
 
   return res.status(200).json({ message: "User updated successfully" });
 };
 
-export const deleteUser = (req, res) => {
+export const deleteUser = async (req, res) => {
   const { email } = req.params;
 
-  const user = users.find((user) => user.email === email);
+  const user = await User.findOne({ email: email });
+
+  console.log(user);
   if (!user) {
     return res.status(404).json({ error: "User not found" });
   }
 
-  const newUsers = users.filter((user) => user.email !== email);
-
-  removeUser(newUsers);
+  await User.deleteOne({ email });
 
   return res.status(200).json({ message: "User deleted" });
 };
