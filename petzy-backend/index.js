@@ -3,6 +3,7 @@ import userRouter from "./routes/userRoutes.js";
 import { log } from "./middlewares/logger.js";
 import mongoose from "mongoose";
 import "dotenv/config";
+import cors from "cors";
 
 const app = express();
 
@@ -17,6 +18,7 @@ console.log(process.env.DB_URL);
 
 app.use(express.json());
 app.use(log);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Petzy backend server ready!");

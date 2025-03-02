@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Grid,
@@ -12,9 +13,11 @@ import {
   Link,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "axios";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
@@ -52,6 +55,24 @@ const Register = () => {
     linkText: { marginTop: "1.5rem", fontSize: "1rem" },
   };
 
+  async function register(data, setSubmitting) {
+    console.log(data);
+
+    await axios
+      .post("http://localhost:3000/users/", data)
+      .then(function (res) {
+        // localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("refreshToken", res.data.refreshToken);
+        navigate("/");
+        console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    setSubmitting(false);
+  }
+
   return (
     <Grid container justifyContent="center">
       <Paper
@@ -66,8 +87,7 @@ const Register = () => {
           initialValues={{ fullName: "", email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
-            setSubmitting(false);
+            register(values, setSubmitting);
           }}
         >
           {({ isSubmitting }) => (

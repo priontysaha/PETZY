@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import registerUser from "../Services/registerService.js";
 
 export const getAllUsers = async (req, res) => {
   const allUsers = await User.find().select(["-__v"]);
@@ -6,14 +7,19 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-  const { name, email } = req.body;
+  const { fullName, email, password } = req.body;
 
   const anotherUser = await User.exists({ email });
   if (anotherUser) {
     return res.status(400).json({ error: "Email  is already in use." });
   }
 
-  const newUser = await User.create({ email, name });
+  // const newUser = await User.create({ email, fullName });
+  const newUser = await registerUser({
+    email: email,
+    password: password,
+    fullName: fullName,
+  });
 
   return res.status(201).json({ newUser });
 };
