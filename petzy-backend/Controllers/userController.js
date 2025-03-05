@@ -1,5 +1,7 @@
 import User from "../models/user.js";
 import registerUser from "../Services/registerService.js";
+import loginUser_DB from "../Services/loginService.js";
+import { generateRefreshToken } from "../Utils/jwtUtils.js";
 
 export const getAllUsers = async (req, res) => {
   const allUsers = await User.find().select(["-__v"]);
@@ -22,6 +24,24 @@ export const createUser = async (req, res) => {
   });
 
   return res.status(201).json({ newUser });
+};
+
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const data = await loginUser_DB(email, password);
+    const rtoken = generateRefreshToken(email);
+
+    const rUser = {
+      ...data,
+      refreshToken: rtoken,
+    };
+
+    res.json(rUser);
+  } catch (error) {
+    res.status(401).json({ message: "Invalid credentials" });
+  }
 };
 
 export const updateUserByEmail = async (req, res) => {

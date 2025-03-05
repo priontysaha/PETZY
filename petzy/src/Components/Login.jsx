@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import {
   Button,
@@ -14,9 +15,11 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "axios";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -54,6 +57,24 @@ const Login = () => {
     },
     linkText: { marginTop: "1.5rem", fontSize: "1rem" },
   };
+  async function login(data, setSubmitting) {
+    console.log(data);
+
+    await axios
+      .put("http://localhost:3000/users", data)
+      .then(function (res) {
+        // localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("refreshToken", res.data.refreshToken);
+        navigate("/");
+        console.log(res.data);
+        console.log("Login success!");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    setSubmitting(false);
+  }
 
   return (
     <Grid container justifyContent="center">
@@ -69,6 +90,7 @@ const Login = () => {
           initialValues={{ email: "", password: "", remember: false }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
+            login(values, setSubmitting);
             console.log(values);
             setSubmitting(false);
           }}
