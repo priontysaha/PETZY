@@ -51,7 +51,6 @@ const Pet_Store = () => {
         Because your pet deserves the best!
       </Typography>
 
-      {/* Grid container for products */}
       <Grid container spacing={4} justifyContent="center">
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
@@ -61,7 +60,7 @@ const Pet_Store = () => {
                 height="200"
                 image={product.image}
                 alt={product.name}
-                style={{ objectFit: "cover" }} // Ensures images fit consistently
+                style={{ objectFit: "cover" }}
               />
               <CardContent style={{ flexGrow: 1 }}>
                 <Typography variant="h6" fontWeight="bold">
