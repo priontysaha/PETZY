@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 import {
@@ -9,10 +9,26 @@ import {
   FaEnvelope,
   FaSignInAlt,
   FaUserPlus,
+  FaSignOutAlt,
   FaBars,
 } from "react-icons/fa";
 
 const Navbar = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  // Check if token exists when component mounts
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token on logout
+    setIsAuthenticated(false);
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
       <div className="container">
@@ -58,18 +74,31 @@ const Navbar = () => {
           </ul>
 
           <div className="d-lg-flex d-block text-center">
-            <NavLink
-              to="/login"
-              className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
-            >
-              <FaSignInAlt className="me-1" /> Login
-            </NavLink>
-            <NavLink
-              to="/register"
-              className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
-            >
-              <FaUserPlus className="me-1" /> Register
-            </NavLink>
+            {isAuthenticated ? (
+              // Show Logout button when logged in
+              <button
+                onClick={handleLogout}
+                className="btn btn-danger me-2 mb-2 mb-lg-0"
+              >
+                <FaSignOutAlt className="me-1" /> Logout
+              </button>
+            ) : (
+              // Show Login and Register when NOT logged in
+              <>
+                <NavLink
+                  to="/login"
+                  className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
+                >
+                  <FaSignInAlt className="me-1" /> Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className="btn btn-outline-primary me-2 mb-2 mb-lg-0"
+                >
+                  <FaUserPlus className="me-1" /> Register
+                </NavLink>
+              </>
+            )}
           </div>
         </div>
       </div>

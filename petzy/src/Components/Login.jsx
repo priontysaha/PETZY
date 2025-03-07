@@ -65,6 +65,8 @@ const Login = () => {
       .then(function (res) {
         // localStorage.setItem("token", res.data.token);
         // localStorage.setItem("refreshToken", res.data.refreshToken);
+        // localStorage.setItem("token", response.data.token);
+
         navigate("/");
         console.log(res.data);
         console.log("Login success!");

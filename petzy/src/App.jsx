@@ -13,6 +13,7 @@ import Donatepage from "./Components/pages/Donatepage";
 import Contact from "./Components/pages/Contact";
 import Services from "./Components/pages/Services";
 import Cart from "./Components/pages/Cart";
+import Logout from "./Components/Logout";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,6 +33,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />}></Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </>
