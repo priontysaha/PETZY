@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <NavLink to="/home" className="nav-link">
+              <NavLink to="/" className="nav-link">
                 <FaHome className="me-1" /> Home
               </NavLink>
             </li>
