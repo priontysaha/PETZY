@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ShowInterestForm = ({ pet, onClose }) => {
+const ShowInterestForm = ({ pet, onClose, onInterestSubmitted }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    phone: "",
+    livingSituation: "",
+    experience: "",
+    otherPets: "",
+  });
 
-  const handleConfirmation = () => {
-    alert("Your request is pending.");
-    navigate("/home");
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3000/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, petId: pet.id }),
+      });
+
+      if (response.ok) {
+        alert("Your request is pending.");
+        onInterestSubmitted(pet.id); // Update UI
+        onClose();
+      } else {
+        alert("Failed to submit interest.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred.");
+    }
   };
 
   return (
@@ -16,83 +45,31 @@ const ShowInterestForm = ({ pet, onClose }) => {
             <h5 className="modal-title" style={{ color: "rgb(63, 136, 238)" }}>
               Pet Adoption Application
             </h5>
-            <button
-              type="button"
-              className="btn-close"
-              onClick={onClose}
-            ></button>
+            <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
           <div className="modal-body">
-            <div className="d-flex align-items-center mb-3">
-              <img
-                src={pet.image}
-                alt={pet.name}
-                className="me-3"
-                style={{
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "10px",
-                  objectFit: "cover",
-                }}
-              />
-              <div>
-                <h6 className="fw-bold" style={{ color: "rgb(63, 136, 238)" }}>
-                  {pet.name}
-                </h6>
-                <p className="text-muted mb-0">
-                  <strong>Type:</strong> {pet.type} <br />
-                  <strong>Age:</strong> {pet.age} <br />
-                  <strong>Location:</strong> {pet.location}
-                </p>
-              </div>
-            </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-2">
                 <label className="form-label">Email:</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Enter your email"
-                />
+                <input type="email" name="email" className="form-control" onChange={handleChange} required />
               </div>
               <div className="mb-2">
                 <label className="form-label">Phone No.:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter phone number"
-                />
+                <input type="text" name="phone" className="form-control" onChange={handleChange} required />
               </div>
               <div className="mb-2">
                 <label className="form-label">Pet Living Situation:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Describe your home setup"
-                />
+                <input type="text" name="livingSituation" className="form-control" onChange={handleChange} required />
               </div>
               <div className="mb-2">
                 <label className="form-label">Previous Pet Experience:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Do you have pet experience?"
-                />
+                <input type="text" name="experience" className="form-control" onChange={handleChange} required />
               </div>
               <div className="mb-3">
                 <label className="form-label">Any Other Pets?</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="List other pets (if any)"
-                />
+                <input type="text" name="otherPets" className="form-control" onChange={handleChange} required />
               </div>
-              <button
-                type="submit"
-                className="btn w-100"
-                style={{ backgroundColor: "rgb(63, 136, 238)", borderColor: "rgb(63, 136, 238)" }}
-                onClick={handleConfirmation}
-              >
+              <button type="submit" className="btn w-100" style={{ backgroundColor: "rgb(63, 136, 238)" }}>
                 Submit
               </button>
             </form>
