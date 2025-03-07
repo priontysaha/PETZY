@@ -6,6 +6,6 @@ import { authenticateToken } from "../Utils/authMiddleware.js";
 const route = express.Router();
 route.use(cors());
 
-route.post("/", authenticateToken, createDonate);
+route.post("/", /*authenticateToken,*/ createDonate);
 
 export default route;

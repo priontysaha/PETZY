@@ -1,5 +1,7 @@
 import express from "express";
 import userRouter from "./routes/userRoutes.js";
+import donatecreate from "./routes/donatecreate.route.js";
+import donateget from "./routes/donateget.route.js";
 import { log } from "./middlewares/logger.js";
 import mongoose from "mongoose";
 import "dotenv/config";
@@ -29,6 +31,10 @@ app.get("/pets/", (req, res) => {
 });
 
 app.use("/users", userRouter);
+
+app.use("/donates", donatecreate);
+
+app.use("/donateget", donateget);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
