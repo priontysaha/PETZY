@@ -20,7 +20,7 @@ const Navbar = () => {
   // Check if token exists when component mounts
   useEffect(() => {
     const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
+    setIsAuthenticated(!token);
   }, []);
 
   const handleLogout = () => {
@@ -74,7 +74,7 @@ const Navbar = () => {
           </ul>
 
           <div className="d-lg-flex d-block text-center">
-            {isAuthenticated ? (
+            {localStorage.getItem("token") ? (
               // Show Logout button when logged in
               <button
                 onClick={handleLogout}

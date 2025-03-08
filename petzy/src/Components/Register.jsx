@@ -61,8 +61,8 @@ const Register = () => {
     await axios
       .post("http://localhost:3000/users/", data)
       .then(function (res) {
-        // localStorage.setItem("token", res.data.token);
-        // localStorage.setItem("refreshToken", res.data.refreshToken);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         navigate("/");
         console.log(res.data);
       })

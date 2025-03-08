@@ -19,11 +19,13 @@ export async function createCustomer(req, res) {
   }
 }
 
-{/*export async function getAllCustomers_DB(req, res) {
+{
+  /*export async function getAllCustomers_DB(req, res) {
   try {
     const events = await getAllDonates_DB();
     res.json(events);
   } catch (error) {
     res.status(500).json({ message: error });
   }
-}*/}
+}*/
+}

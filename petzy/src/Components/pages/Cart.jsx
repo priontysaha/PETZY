@@ -12,6 +12,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const paymentMethods = ["Cash on Delivery (COD)", "Bkash", "Rocket", "Nagad"];
 
@@ -39,13 +40,46 @@ const Cart = () => {
     setCustomerInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleOrderConfirmation = () => {
-    alert("Order confirmed! Thank you for your purchase.");
-    navigate("/pet_store");
+  const handleDeleteItem = () => {
+    alert("Delete functionality not implemented yet.");
   };
 
-  const handleDeleteItem = () => {
-    navigate("/pet_store");
+  const handleOrderConfirmation = async () => {
+    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
+      console.log(customerInfo.payment);
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    const orderDetails = {
+      //productId: product._id,
+      productName: product.name,
+      price: product.price,
+      quantity: quantity,
+
+      name: customerInfo.name, // Rename to match backend schema
+      phone: customerInfo.phone,
+      email: customerInfo.email,
+      address: customerInfo.address,
+      payment: customerInfo.payment,
+    };
+
+    console.log("Sending Order Data:", orderDetails); // Debugging log
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/customer",
+        orderDetails,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      if (response.status === 201) {
+        alert("Order confirmed! Thank you for your purchase.");
+        navigate("/pet_store");
+      }
+    } catch (error) {
+      console.error("Error placing order:", error.response?.data || error);
+      alert("Failed to place order. Please try again.");
+    }
   };
 
   return (

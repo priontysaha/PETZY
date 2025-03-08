@@ -63,9 +63,8 @@ const Login = () => {
     await axios
       .put("http://localhost:3000/users", data)
       .then(function (res) {
-        // localStorage.setItem("token", res.data.token);
-        // localStorage.setItem("refreshToken", res.data.refreshToken);
-        // localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
 
         navigate("/");
         console.log(res.data);
