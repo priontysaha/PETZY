@@ -23,6 +23,14 @@ app.use(express.json());
 app.use(log);
 app.use(cors());
 
+
+// app.use(cors({
+//   origin: "http://localhost:3000", // Allow frontend to access API
+//   methods: "GET,POST,PUT,DELETE",
+//   allowedHeaders: "Content-Type",
+// }));
+
+
 app.get("/", (req, res) => {
   res.send("Petzy backend server ready!");
 });
@@ -37,7 +45,7 @@ app.use("/donates", donatecreate);
 
 app.use("/donateget", donateget);
 
-app.use("/api", petRoutes);
+app.use("/show-interest", petRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

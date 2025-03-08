@@ -1,8 +1,13 @@
 import PetInterest from "../models/PetInterest.js";
 
 export async function showInterest(req, res) {
+  console.log("Received request:", req.body);
+
   try {
     const { petId, email, phone, livingSituation, experience, otherPets } = req.body;
+    if (!petId || !email || !phone) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
 
     // Create a new interest entry
     const newInterest = new PetInterest({

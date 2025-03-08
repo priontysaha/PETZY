@@ -16,24 +16,30 @@ const ShowInterestForm = ({ pet, onClose, onInterestSubmitted }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting interest for pet:", pet.id);
+
 
     try {
-      const response = await fetch("http://localhost:3000/api", {
+      const response = await fetch("http://localhost:3000/show-interest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, petId: pet.id }),
       });
+      console.log("Response Status:", response.status);
+      
+      const data = await response.json();
+      console.log("Response Data:", data);
 
       if (response.ok) {
         alert("Your request is pending.");
         onInterestSubmitted(pet.id); // Update UI
         onClose();
       } else {
-        alert("Failed to submit interest.");
+        alert("Failed to submit interest: " + data.message);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred.");
+      alert("An error occurred: " + error.message);
     }
   };
 
