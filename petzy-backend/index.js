@@ -4,6 +4,8 @@ import refreshTokentroute from "./routes/refreshToken.route.js";
 import donatecreate from "./routes/donatecreate.route.js";
 import donateget from "./routes/donateget.route.js";
 import petRoutes from "./routes/petRoutes.js";
+import customerRoute from "./routes/customerRoute.js";
+
 import { log } from "./middlewares/logger.js";
 import mongoose from "mongoose";
 import "dotenv/config";
@@ -47,6 +49,8 @@ app.use("/donates", donatecreate);
 app.use("/donateget", donateget);
 
 app.use("/show-interest", petRoutes);
+
+app.use("/customer", customerRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
