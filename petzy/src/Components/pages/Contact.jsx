@@ -25,16 +25,16 @@ const Contact = () => {
 
           <p className="fw-bold mt-4">Follow us on:</p>
           <div className="d-flex justify-content-center justify-content-md-start gap-3">
-            <a href="https://linkedin.com" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/sadia-hossain-095090254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-linkedin fs-5"></i>
             </a>
-            <a href="https://github.com" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/hossain-sneha" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github fs-5"></i>
             </a>
-            <a href="https://instagram.com" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/sadia_hossain_sneha?igsh=MXJod25mcGZjN2ttdw==" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-instagram fs-5"></i>
             </a>
-            <a href="https://whatsapp.com" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/qr/HS6EFLFBBI7OA1" className="text-dark text-decoration-none" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-whatsapp fs-5"></i>
             </a>
           </div>
